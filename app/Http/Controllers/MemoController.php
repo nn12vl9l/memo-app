@@ -22,4 +22,25 @@ class MemoController extends Controller
         $memo = Memo::find($id);
         return view('memos.show', ['memo' => $memo]);
     }
+
+        public function create()
+    {
+        return view('memos.create');
+    }
+
+    public function store(Request $request)
+    {
+        //インスタンスの生成
+        $memo = new Memo;
+
+        //値の用意
+        $memo->title = $request->title;
+        $memo->body = $request->body;
+
+        //インスタンスに値を設定して保存
+        $memo->save();
+
+        //登録したらindexに戻る
+        return redirect('/memos');
+    }
 }

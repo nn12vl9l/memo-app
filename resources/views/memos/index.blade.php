@@ -14,5 +14,7 @@
             <li><a href="{{ route('memos.show', $memo) }}">{{ $memo->title }}</a></li>
         @endforeach
     </ul>
+
+    <a href="/memos/create">投稿する</a>
 </body>
 </html>
