@@ -11,12 +11,14 @@ class MemoController extends Controller
     public function index()
     {
         // モデル名::テーブル全件取得
+        //$memosは変数名
         $memos = Memo::all();
         // memosディレクトリーの中のindexページを指定し、memosの連想配列を代入
         return view ('memos.index', ['memos' => $memos]);
     }
 
     //showページへ移動
+    //$idは引数
     public function show($id)
     {
         $memo = Memo::find($id);
@@ -41,7 +43,7 @@ class MemoController extends Controller
         $memo->save();
 
         //登録したらindexに戻る
-        return redirect('/memos');
+        return redirect(route("memos.index"));
     }
 
     public function edit($id)
