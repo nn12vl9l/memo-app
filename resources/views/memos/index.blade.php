@@ -7,7 +7,7 @@
     <title>memo index</title>
 </head>
 <body>
-    <h1>タイトル一覧</h1>
+    <h1>MEMO</h1>
     <ul>
         @foreach ($memos as $memo)
             <!-- // リンク先をidで取得し名前で出力 -->
@@ -15,6 +15,7 @@
         @endforeach
     </ul>
 
-    <a href="/memos/create">投稿する</a>
+    <button onclick="location.href='/memos/create'">投稿する</button>
+    {{-- <a href="/memos/create">投稿する</a> --}}
 </body>
 </html>
