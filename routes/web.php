@@ -14,7 +14,7 @@ use App\Http\Controllers\MemoController;
 |
 */
 
-Route::get('/', [App\Http\Controllers\MemoController::class, 'index']);
+Route::get('/', [MemoController::class, 'index']);
 
 
 Route::resource('memos', MemoController::class);
