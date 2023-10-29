@@ -14,7 +14,7 @@
     <h1>{{ $memo->title }}</h1>
     <p>{!! nl2br(e($memo->body)) !!}</p>
     <div class="button-group">
-        <button onclick="location.href='/memos/{{ $memo->id }}/edit'">編集する</button>
+        <button onclick='location.href="{{ route("memos.edit", $memo) }}"'>編集する</button>
         <form action="/memos/{{ $memo->id }}" method="post">
             @csrf
             @method('DELETE')

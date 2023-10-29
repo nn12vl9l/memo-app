@@ -46,10 +46,12 @@ class MemoController extends Controller
         return redirect(route("memos.index"));
     }
 
+    //$idは引数→編集したい値を自動で取ってきてくれる
     public function edit($id)
     {
         $memo = Memo::find($id);
         return view('memos.edit', ['memo' => $memo]);
+        // 渡すデータ'memo'=>取得するデータ$memo
     }
 
     public function update(Request $request, $id)
