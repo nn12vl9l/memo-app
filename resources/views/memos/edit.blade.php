@@ -10,6 +10,20 @@
 <body>
     <a href="{{ route('memos.show', $memo) }}">戻る</a>
     <h1>更新</h1>
+    @if ($errors->any())
+        <div class="error">
+            <p>
+                <b>{{ count($errors) }}件のエラーがあります。</b>
+            </p>
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
     <!-- 更新先はmemosのidにしないと増える sail artisan rote:listで確認① -->
     <!-- $memo(オブジェクト)の中身のデータをすべて渡してlaravelが探してくれる -->
     <form action="{{ route('memos.update', $memo) }}" method="post">
@@ -17,11 +31,14 @@
         @method('PATCH')
         <p>
             <label for="title">タイトル</label><br>
-            <input type="text" name="title" id="title" value="{{ $memo->title }}">
+            {{-- <input type="text" name="title" id="title" value="{{ $memo->title }}"> --}}
+            {{-- valueの$memo->titleで詳細画面で表示されていたtitleが表示される --}}
+            <input type="text" name="title" id="title" value="{{ old('title', $memo->title) }}">
         </p>
         <p>
             <label for="body">本文</label><br>
-            <textarea name="body" class="body" id="body">{{ $memo->body }}</textarea>
+            {{-- <textarea name="body" class="body" id="body">{{ $memo->body }}</textarea> --}}
+            <textarea name="body" class="body" id="body">{{ old('body', $memo->body) }}</textarea>
         </p>
         <input type="submit" value="更新">
     </form>

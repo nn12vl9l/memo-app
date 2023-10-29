@@ -12,6 +12,11 @@ label {
 .button-group {
     display: flex;
 }
-.button-group button {
+
+.button-group > *:not(:last-child) {
     margin-right: 10px;
+}
+
+.error {
+    color: red;
 }

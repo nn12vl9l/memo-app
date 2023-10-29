@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Memo;
+use App\Http\Requests\MemoRequest;
 
 class MemoController extends Controller
 {
@@ -30,7 +30,7 @@ class MemoController extends Controller
         return view('memos.create');
     }
 
-    public function store(Request $request)
+    public function store(MemoRequest $request)
     {
         //インスタンスの生成
         $memo = new Memo;
@@ -54,7 +54,7 @@ class MemoController extends Controller
         // 渡すデータ'memo'=>取得するデータ$memo
     }
 
-    public function update(Request $request, $id)
+    public function update(MemoRequest $request, $id)
     {
         $memo = Memo::find($id);
 
